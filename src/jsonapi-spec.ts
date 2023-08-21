@@ -5,9 +5,22 @@ export type JsonapiResponseDoc =
 export type JsonapiSuccessDoc = JsonapiCollectionDoc | JsonapiResourceDoc
 export type JsonapiRequestDoc = JsonapiResourceRequest
 
+export interface LinkObject {
+  href: string
+  rel?: string
+  describedby?: string
+  title?: string
+  type?: string
+  hreflang?: string | string[]
+  meta?: Record<string, any>
+}
+
+export type LinkMember = LinkObject | string | null
+
 export interface JsonapiDocMeta {
   included?: JsonapiResource[]
   meta?: Record<string, any>
+  links?: Record<string,LinkMember> 
 }
 
 export interface JsonapiCollectionDoc extends JsonapiDocMeta {
